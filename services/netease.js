@@ -41,7 +41,7 @@ function build_netease() {
 
     let target_url = '';
     if (offset != null) {
-      target_url = `http://music.163.com/discover/playlist/?order=${order}&limit=35&offset=${offset}`;
+      target_url = `http://music.163.com/discover/playlist/?order=${order}&limit=34&offset=${offset}`;
     } else {
       target_url = `http://music.163.com/discover/playlist/?order=${order}`;
     }
