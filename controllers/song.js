@@ -22,7 +22,7 @@ exports.getLyric = async (ctx) => {
 exports.getSong = async (ctx) => {
   const { trackId } = ctx.params;
   try {
-    const [songUrl, lyric] = await Promise.all([
+    const [songUrl, lyric = {}] = await Promise.all([
       netease.bootstrap_track(trackId),
       netease.lyric(trackId),
     ]);
@@ -30,7 +30,7 @@ exports.getSong = async (ctx) => {
       retcode: 0,
       data: {
         url: songUrl,
-        lyric,
+        lyric: lyric.lyric,
       },
     };
   } catch (e) {
