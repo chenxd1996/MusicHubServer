@@ -10,7 +10,7 @@ exports.json2FormUrlEncoded = function (json) {
 
 
 exports.parseLyric = function (lyric = '') {
-  // lyric = lyric.replace(/\s/g, '');
+  lyric = lyric.replace(/\n/g, '');
   const timeRegx = /\[(\d+:[\d.]+)\]/g;
   const timeStrs = [];
   let result = timeRegx.exec(lyric);
