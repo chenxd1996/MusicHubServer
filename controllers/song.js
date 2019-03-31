@@ -1,4 +1,5 @@
 const netease = require('../services/netease');
+const { parseLyric } = require('../common//utils');
 
 exports.getLyric = async (ctx) => {
   const { trackId } = ctx.params;
@@ -30,7 +31,7 @@ exports.getSong = async (ctx) => {
       retcode: 0,
       data: {
         url: songUrl,
-        lyric: lyric.lyric,
+        lyric: parseLyric(lyric.lyric),
       },
     };
   } catch (e) {
