@@ -13,7 +13,7 @@ exports.parseLyric = function (lyric = '') {
   // 去掉换行符，把相连的时间替换为后一个的时间
   lyric = lyric.replace(/\n/g, '').replace(/\[\d+:[\d.]+\](\[\d+:[\d.]+\])/g, (match, p) => {
     return p;
-  }).replace(/\[\S+\D+:\D+\S+](?=\[)/g, '');
+  }).replace(/\[\D*:\S*(?=\[)/g, '');
   const timeRegx = /\[(\d+:[\d.]+)\]/g;
   const timeStrs = [];
   let result = timeRegx.exec(lyric);
