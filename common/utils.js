@@ -10,7 +10,10 @@ exports.json2FormUrlEncoded = function (json) {
 
 
 exports.parseLyric = function (lyric = '') {
-  lyric = lyric.replace(/\n/g, '');
+  // 去掉换行符，把相连的时间替换为后一个的时间
+  lyric = lyric.replace(/\n/g, '').replace(/\[\d+:[\d.]+\](\[\d+:[\d.]+\])/g, (match, p) => {
+    return p;
+  });
   const timeRegx = /\[(\d+:[\d.]+)\]/g;
   const timeStrs = [];
   let result = timeRegx.exec(lyric);
