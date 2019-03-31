@@ -14,7 +14,7 @@ exports.parseLyric = function (lyric = '') {
   lyric = lyric.replace(/\n/g, '').replace(/\[\d+:[\d.]+\](\[\d+:[\d.]+\])/g, (match, p) => {
     return p;
   }).replace(/\[\D*:\S*(?=\[)/g, '');
-  const timeRegx = /\[\s*(\d+\s*:\s*[\d\s.]+)\s*\]/g;
+  const timeRegx = /\[(\d+:[\d.]+)(:\d+)?\]/g;
   const timeStrs = [];
   let result = timeRegx.exec(lyric);
   while (result) {
@@ -22,8 +22,8 @@ exports.parseLyric = function (lyric = '') {
     result = timeRegx.exec(lyric);
   }
   const timesArr = timeStrs.map((time = '') => {
-    const [minutes = 0, seconds = 0] = time.split(':');
-    return Number.parseFloat(minutes) * 60 + Number.parseFloat(seconds);
+    const [first = 0, second = 0, third = 0] = time.split(':');
+    return Number.parseFloat(first) * 60 + Number.parseFloat(second) + Number.parseFloat(third) / 60;
   });
   const lyricArr = lyric.replace(timeRegx, '$#')
     .split('$#').filter((item) => {
