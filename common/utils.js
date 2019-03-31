@@ -14,7 +14,7 @@ exports.parseLyric = function (lyric = '') {
   lyric = lyric.replace(/\n/g, '').replace(/\[\d+:[\d.]+\](\[\d+:[\d.]+\])/g, (match, p) => {
     return p;
   }).replace(/\[\D*:\S*(?=\[)/g, '');
-  const timeRegx = /\[(\d+:[\d.]+)\s*\]/g;
+  const timeRegx = /\[\s*(\d+\s*:\s*[\d\s.]+)\s*\]/g;
   const timeStrs = [];
   let result = timeRegx.exec(lyric);
   while (result) {
