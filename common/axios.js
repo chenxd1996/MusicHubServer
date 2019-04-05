@@ -11,7 +11,6 @@ function getRandomIp() {
 
 axios.interceptors.request.use((config) => {
   config.headers.common['X-Forwarded-For'] = getRandomIp();
-  console.log(config);
   return config;
 });
 
