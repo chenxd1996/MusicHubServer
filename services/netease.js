@@ -4,8 +4,8 @@
  */
 const aesjs = require('aes-js');
 const { JSDOM } = require('jsdom');
-const axios = require('axios');
 const btoa = require('btoa');
+const axios = require('../common/axios');
 const { prefixs } = require('../common/const');
 const { json2FormUrlEncoded } = require('../common/utils');
 const {
@@ -41,9 +41,9 @@ function build_netease() {
 
     let target_url = '';
     if (offset != null) {
-      target_url = `http://music.163.com/discover/playlist/?order=${order}&limit=34&offset=${offset}`;
+      target_url = `https://music.163.com/discover/playlist?order=${order}&limit=34&offset=${offset}`;
     } else {
-      target_url = `http://music.163.com/discover/playlist/?order=${order}`;
+      target_url = `https://music.163.com/discover/playlist?order=${order}`;
     }
 
     return axios.get(target_url).then((response) => {
