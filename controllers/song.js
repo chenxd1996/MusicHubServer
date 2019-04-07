@@ -30,6 +30,7 @@ exports.getSong = async (ctx) => {
     ctx.body = {
       retcode: 0,
       data: {
+        id: trackId,
         url: songUrl,
         lyric: parseLyric(lyric.lyric),
       },
