@@ -11,7 +11,6 @@ const axios = require('../common/axios');
 const { prefixs } = require('../common/const');
 const { json2FormUrlEncoded } = require('../common/utils');
 
-
 const prefix = prefixs.QQ;
 
 const commonHeaders = {
