@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "aes-js": "^3.1.2",
+    "atob": "^2.1.2",
     "axios": "^0.18.0",
     "btoa": "^1.2.1",
     "debug": "^2.6.3",
@@ -24,6 +25,7 @@
     "koa-static": "^3.0.0",
     "koa-views": "^5.2.1",
     "pug": "^2.0.0-rc.1",
+    "text-encoding": "^0.7.0",
     "xmldom": "^0.1.27"
   },
   "devDependencies": {

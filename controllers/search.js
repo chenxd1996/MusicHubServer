@@ -1,9 +1,10 @@
 const netease = require('../services/netease');
 
 exports.search = async (ctx) => {
+  const { musicProvider } = ctx;
   const { keyword, page } = { ...ctx.query, ...ctx.request.body };
   try {
-    const result = await netease.search(keyword, page);
+    const result = await musicProvider.search(keyword, page);
     ctx.body = {
       retcode: 0,
       data: {

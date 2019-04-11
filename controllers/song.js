@@ -2,9 +2,10 @@ const netease = require('../services/netease');
 const { parseLyric } = require('../common//utils');
 
 exports.getLyric = async (ctx) => {
+  const { musicProvider } = ctx;
   const { trackId } = ctx.params;
   try {
-    const lyric = await netease.lyric(trackId);
+    const lyric = await musicProvider.lyric(trackId);
     ctx.body = {
       retcode: 0,
       data: {
@@ -21,11 +22,12 @@ exports.getLyric = async (ctx) => {
 };
 
 exports.getSong = async (ctx) => {
+  const { musicProvider } = ctx;
   const { trackId } = ctx.params;
   try {
     const [songUrl, lyric = {}] = await Promise.all([
-      netease.bootstrap_track(trackId),
-      netease.lyric(trackId),
+      musicProvider.bootstrap_track(trackId),
+      musicProvider.lyric(trackId),
     ]);
     ctx.body = {
       retcode: 0,

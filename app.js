@@ -10,6 +10,8 @@ const logger = require('koa-logger');
 const index = require('./routes/index');
 const users = require('./routes/users');
 
+const musicProvider = require('./middleWares/musicProvider');
+
 // error handler
 onerror(app);
 
@@ -32,6 +34,8 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start;
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
+
+app.use(musicProvider);
 
 // routes
 app.use(index.routes(), index.allowedMethods());

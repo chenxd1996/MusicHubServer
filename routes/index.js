@@ -3,8 +3,8 @@ const playList = require('../controllers/playList');
 const search = require('../controllers/search');
 const song = require('../controllers/song');
 
-router.get('/play_list/', playList.getAllPlayLists);
-router.post('/play_list/', playList.getAllPlayLists);
+router.get('/:prefix/play_list/', playList.getAllPlayLists);
+router.post('/:prefix/play_list/', playList.getAllPlayLists);
 
 router.get('/play_list/:playListId', playList.getPlayListDetail);
 router.post('/play_list/:playListId', playList.getPlayListDetail);
@@ -15,8 +15,8 @@ router.post('/artist/:artistId', playList.getArtist);
 router.get('/album/:albumId', playList.getAlbum);
 router.post('/album/:albumId', playList.getAlbum);
 
-router.get('/search', search.search);
-router.post('/search', search.search);
+router.get('/:prefix/search', search.search);
+router.post('/:prefix/search', search.search);
 
 router.get('/lyric/:trackId', song.getLyric);
 router.post('/lyric/:trackId', song.getLyric);

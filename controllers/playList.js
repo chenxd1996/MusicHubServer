@@ -1,9 +1,8 @@
-const netease = require('../services/netease');
-
 exports.getAllPlayLists = async (ctx) => {
+  const { musicProvider } = ctx;
   const { offset = 0 } = { ...ctx.query, ...ctx.request.body };
   try {
-    const playLists = await netease.show_playlist(offset);
+    const playLists = await musicProvider.show_playlist(offset);
     ctx.body = {
       retcode: 0,
       data: {
@@ -20,10 +19,11 @@ exports.getAllPlayLists = async (ctx) => {
 };
 
 exports.getPlayListDetail = async (ctx) => {
+  const { musicProvider } = ctx;
   const { playListId } = ctx.params;
 
   try {
-    const playList = await netease.get_playlist(playListId);
+    const playList = await musicProvider.get_playlist(playListId);
     ctx.body = {
       retcode: 0,
       data: {
@@ -40,10 +40,11 @@ exports.getPlayListDetail = async (ctx) => {
 };
 
 exports.getAlbum = async (ctx) => {
+  const { musicProvider } = ctx;
   const { albumId } = ctx.params;
 
   try {
-    const album = await netease.get_album(albumId);
+    const album = await musicProvider.get_album(albumId);
     ctx.body = {
       retcode: 0,
       data: {
@@ -60,10 +61,11 @@ exports.getAlbum = async (ctx) => {
 };
 
 exports.getArtist = async (ctx) => {
+  const { musicProvider } = ctx;
   const { artistId } = ctx.params;
 
   try {
-    const artist = await netease.get_artist(artistId);
+    const artist = await musicProvider.get_artist(artistId);
     ctx.body = {
       retcode: 0,
       data: {
