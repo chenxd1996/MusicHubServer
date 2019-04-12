@@ -123,9 +123,7 @@ function build_xiami() {
       default_playlist.source_url = `http://www.xiami.com/collect/${list_id}`;
       return default_playlist;
     });
-    return {
-      result,
-    };
+    return result;
   }
 
   // eslint-disable-next-line no-unused-vars
